@@ -32,15 +32,41 @@ const db = getFirestore();
 //     .catch(console.error);
 
 // now we have data, let's READ (get) them
-db.collection('Clothing').get()
-    .then(collection => {
-        const Clothing = collection.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        console.table(Clothing);
-    })
-    //         let item = doc.data()
-    //         item.id = doc.id
-    //         return item
-    //     })
-    //     console.table(clothing)
-    // })
-    .catch(console.error);
+// db.collection('clothing').get()
+//     .then(collection => {
+//         const Clothing = collection.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+//         console.table(Clothing);
+//     })
+//     //         let item = doc.data()
+//     //         item.id = doc.id
+//     //         return item
+//     //     })
+//     //     console.table(clothing)
+//     // })
+//     .catch(console.error);
+
+// Let's say I want to find all of the clothing items that are >=79.99
+// db.collection('clothing') 
+// .where('price', '>=', 29.99)   
+// .get()
+// .then(collection => {
+//     const clothing = collection.docs.map(doc => ({...doc.data(), id: doc.id}));
+//     console.table(clothing);
+// })
+// .catch(console.error);
+
+// // now lets get a single document by id (we'll use await, just to show)
+// const doc = await db.collection('clothing').doc('NPFYsu7VAeocs7HThPeF').get()
+//             .catch(console.error);
+// const clothingItem = {...doc.data(), id: doc.id };
+// console.table(clothingItem);
+
+// lets update a single doc
+// db.collection('clothing').doc('NPFYsu7VAeocs7HThPeF')
+// .update({ color: 'red', rating: 4.9 })
+// .then(doc => console.log('Updated doc. ' ))
+// .catch(console.error)
+
+// Even though we Seldom delete, here's how:
+db.collection('clothing').doc('NPFYsu7VAeocs7HThPeF')
+.delete()
